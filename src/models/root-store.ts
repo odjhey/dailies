@@ -18,10 +18,13 @@ export const RootStore = types
           task.due.toLocaleDateString() === new Date().toLocaleDateString()
       )
     },
+    allTasks() {
+      return [...self.tasks.values()]
+    },
   }))
   .actions((self) => {
     return {
-      addTask: (task: { id: string; name: string }) => {
+      addTask: (task: { id: string; name: string; due: Date }) => {
         self.tasks.put(task)
       },
     }

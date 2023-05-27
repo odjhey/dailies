@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Nav from './layouts/Nav'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
+import { All } from './pages/All'
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,14 @@ const router = createBrowserRouter([
     element: (
       <Nav>
         <Home></Home>
+      </Nav>
+    ),
+  },
+  {
+    path: '/all',
+    element: (
+      <Nav>
+        <All></All>
       </Nav>
     ),
   },

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { useStore } from '../hooks/useStore'
 import { useForm } from 'react-hook-form'
 
-export const Home = observer(() => {
+export const All = observer(() => {
   const { store, loading } = useStore()
   const { register, handleSubmit, reset, setFocus } = useForm<{
     name: string
@@ -15,7 +15,7 @@ export const Home = observer(() => {
 
   return (
     <>
-      <h1>Home</h1>
+      <h1>All</h1>
       <section>
         <form
           onSubmit={handleSubmit((v) => {
@@ -40,7 +40,7 @@ export const Home = observer(() => {
         </form>
       </section>
       <section>
-        {store.tasksToday().map((task) => {
+        {store.allTasks().map((task) => {
           return (
             <div key={task.id}>
               {task.name} - {task.due.toLocaleDateString()}
