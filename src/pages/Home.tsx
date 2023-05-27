@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../hooks/useStore'
 import { useForm } from 'react-hook-form'
+import { IconCheck, IconX } from '@tabler/icons-react'
 
 export const Home = observer(() => {
   const { store, loading } = useStore()
@@ -42,8 +43,21 @@ export const Home = observer(() => {
       <section>
         {store.tasksToday().map((task) => {
           return (
-            <div key={task.id}>
+            <div key={task.id} className="p-2 flex justify-between">
               {task.name} - {task.due.toLocaleDateString()}
+              {task.done ? (
+                <IconCheck
+                  onClick={() => {
+                    store.tasks.get(task.id)?.undone()
+                  }}
+                ></IconCheck>
+              ) : (
+                <IconX
+                  onClick={() => {
+                    store.tasks.get(task.id)?.markDone()
+                  }}
+                ></IconX>
+              )}
             </div>
           )
         })}
