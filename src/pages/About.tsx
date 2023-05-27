@@ -1,3 +1,36 @@
+import { observer } from 'mobx-react-lite'
+import { useStore } from '../hooks/useStore'
+import { getSnapshot } from 'mobx-state-tree'
+
+const Download = observer(() => {
+  const { store } = useStore()
+  return (
+    <div>
+      <button
+        className="btn btn-sm btn-info"
+        type="button"
+        onClick={() => {
+          const snap = JSON.stringify(getSnapshot(store))
+
+          const b = new File([snap], 'dailies.json', {
+            type: 'application/json;charset=utf-8',
+          })
+          window.open(window.URL.createObjectURL(b))
+        }}
+      >
+        download
+      </button>
+    </div>
+  )
+})
+
 export const About = () => {
-  return <h1>Daily quests</h1>
+  return (
+    <>
+      <h1>Daily quests</h1>
+      <div>
+        <Download></Download>
+      </div>
+    </>
+  )
 }
