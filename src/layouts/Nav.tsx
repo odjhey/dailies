@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
 import { NavLink } from 'react-router-dom'
-import { IconHome, IconInfoCircle } from '@tabler/icons-react'
+import { IconHome, IconInfoCircle, IconDashboard } from '@tabler/icons-react'
 
 export default function Nav({ children }: PropsWithChildren) {
   return (
@@ -13,6 +13,12 @@ export default function Nav({ children }: PropsWithChildren) {
           to="/"
         >
           <IconHome></IconHome>
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active' : '')}
+          to="/all"
+        >
+          <IconDashboard></IconDashboard>
         </NavLink>
         <NavLink
           to="/about"

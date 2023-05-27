@@ -18,10 +18,10 @@ export const useStore = () => {
         : RootStore.create({})
 
       setStore(rootStore)
-      setLoading(false)
       onSnapshot(rootStore, (snapshot) => {
         localforage.setItem(LOCALFORAGE_STORE_KEY, snapshot)
       })
+      setLoading(false)
     })
   }, [])
 
